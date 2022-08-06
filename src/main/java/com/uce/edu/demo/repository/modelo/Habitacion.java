@@ -79,6 +79,8 @@ public class Habitacion {
 		return "Habitacion [id=" + id + ", numero=" + numero + ", piso=" + piso + ", tipo=" + tipo + ", hotel=" + hotel
 				+ "]";
 	}
+
+
 	
 	
 	
