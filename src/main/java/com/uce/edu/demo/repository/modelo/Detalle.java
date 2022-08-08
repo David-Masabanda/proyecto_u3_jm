@@ -13,26 +13,26 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="deta")
+@Table(name="detalle")
 public class Detalle {
 	
 	@Id
-	@Column(name="deta_id")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator ="deta_id_seq" )
-	@SequenceGenerator(name="deta_id_seq", sequenceName = "deta_id_seq", allocationSize =1 )
+	@Column(name="det_id")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator ="det_id_seq" )
+	@SequenceGenerator(name="det_id_seq", sequenceName = "det_id_seq", allocationSize =1 )
 	private Integer id;
 	
-	@Column(name="deta_nombre")
+	@Column(name="det_nombre")
 	private String nombre;
 	
-	@Column(name="deta_cantidad")
+	@Column(name="det_cantidad")
 	private Integer cantidad;
 	
-	@Column(name="deta_subtotal")
+	@Column(name="det_subtotal")
 	private BigDecimal subtotal;
 	
 	@ManyToOne
-	@JoinColumn(name="deta_fac_id")
+	@JoinColumn(name="det_fact_id")
 	private Factura factura;
 	
 	
@@ -79,8 +79,7 @@ public class Detalle {
 
 	@Override
 	public String toString() {
-		return "Detalle [id=" + id + ", nombre=" + nombre + ", cantidad=" + cantidad + ", subtotal=" + subtotal
-				+ ", factura=" + factura + "]";
+		return "Detalle [id=" + id + ", nombre=" + nombre + ", cantidad=" + cantidad + ", subtotal=" + subtotal + "]";
 	}
 
 

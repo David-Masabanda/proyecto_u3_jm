@@ -11,9 +11,9 @@ public interface IFacturaService {
 	public Factura consultar(Integer id);
 	
 	//Inner Join
-	public List<Factura> buscarFacturaInnerJoin(LocalDateTime fechaCompra);
+	public List<Factura> buscarFacturaInnerJoin(BigDecimal precio);
 	//Inner Outer Join Left
-	public List<Factura> buscarFacturaOuterJoinLeft( BigDecimal precio);
+	public List<Factura> buscarFacturaOuterJoinLeft(BigDecimal precio);
 	//Inner Outer Join Right
 	public List<Factura> buscarFacturaOuterJoinRight(Integer cantidad);
 }

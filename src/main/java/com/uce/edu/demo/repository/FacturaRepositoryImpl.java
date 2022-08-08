@@ -1,7 +1,6 @@
 package com.uce.edu.demo.repository;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -28,11 +27,11 @@ public class FacturaRepositoryImpl implements IFacturaRepository{
 
 	//INNER JOIN
 	@Override
-	public List<Factura> buscarFacturaInnerJoin(LocalDateTime fechaCompra) {
+	public List<Factura> buscarFacturaInnerJoin(BigDecimal precio) {
 		TypedQuery<Factura> myQuery=this.entityManager.createQuery(
-				"SELECT f FROM Fact f INNER JOIN f.detalles d WHERE f.fecha= : datoFecha ", 
+				"SELECT f FROM Factura f JOIN f.detalles d WHERE d.subtotal> :datoPrecio", 
 				Factura.class);
-		myQuery.setParameter("datoFecha", fechaCompra);
+		myQuery.setParameter("datoPrecio", precio);
 		return myQuery.getResultList();
 	}
 
@@ -41,7 +40,7 @@ public class FacturaRepositoryImpl implements IFacturaRepository{
 	@Override
 	public List<Factura> buscarFacturaOuterJoinLeft(BigDecimal precio) {
 		TypedQuery<Factura> myQuery=this.entityManager.createQuery(
-				"SELECT f FROM Fact f LEFT JOIN f.detalles d WHERE d.subtotal= : datoPrecio ", 
+				"SELECT f FROM Factura f LEFT JOIN f.detalles d WHERE d.subtotal> : datoPrecio ", 
 				Factura.class);
 		myQuery.setParameter("datoPrecio", precio);
 		return myQuery.getResultList();
@@ -52,7 +51,7 @@ public class FacturaRepositoryImpl implements IFacturaRepository{
 	@Override
 	public List<Factura> buscarFacturaOuterJoinRight(Integer cantidad) {
 		TypedQuery<Factura> myQuery=this.entityManager.createQuery(
-				"SELECT f FROM Fact f RIGHT JOIN f.detalles d WHERE d.cantidad>= : datoCantidad ", 
+				"SELECT f FROM Factura f RIGHT JOIN f.detalles d WHERE d.cantidad> : datoCantidad ", 
 				Factura.class);
 		myQuery.setParameter("datoCantidad", cantidad);
 		return myQuery.getResultList();

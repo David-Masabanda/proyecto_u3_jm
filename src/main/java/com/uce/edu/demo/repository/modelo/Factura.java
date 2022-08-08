@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,23 +14,23 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="fact")
+@Table(name="factura")
 public class Factura {
 	
 	@Id
-	@Column(name="fac_id")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator ="fac_id_seq" )
-	@SequenceGenerator(name="fac_id_seq", sequenceName = "fac_id_seq", allocationSize =1 )
+	@Column(name="fact_id")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator ="fact_id_seq" )
+	@SequenceGenerator(name="fact_id_seq", sequenceName = "fact_id_seq", allocationSize =1 )
 	private Integer id;
 	
-	@Column(name="fac_fecha")
+	@Column(name="fact_fecha")
 	private LocalDateTime fecha;
 	
-	@Column(name="fac_numero")
+	@Column(name="fact_numero")
 	private String numero;
 
 	//, fetch=FetchType.EAGER
-	@OneToMany(mappedBy="factura")
+	@OneToMany(mappedBy="factura", fetch=FetchType.EAGER)
 	private List<Detalle> detalles;
 
 	

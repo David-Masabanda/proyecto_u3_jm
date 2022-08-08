@@ -1,7 +1,6 @@
 package com.uce.edu.demo.service;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +22,8 @@ public class FacturaServiceImpl implements  IFacturaService {
 
 	//INNER JOIN
 	@Override
-	public List<Factura> buscarFacturaInnerJoin(LocalDateTime fechaCompra) {
-		return this.facturaRepository.buscarFacturaInnerJoin(fechaCompra);
+	public List<Factura> buscarFacturaInnerJoin(BigDecimal precio) {
+		return this.facturaRepository.buscarFacturaInnerJoin(precio);
 	}
 
 	//OUTER LEFT JOIN
