@@ -79,8 +79,11 @@ public class Detalle {
 
 	@Override
 	public String toString() {
-		return "Detalle [id=" + id + ", nombre=" + nombre + ", cantidad=" + cantidad + ", subtotal=" + subtotal + "]";
+		return "Detalle [id=" + id + ", nombre=" + nombre + ", cantidad=" + cantidad + ", subtotal=" + subtotal
+				+ ", factura=" + factura + "]";
 	}
+
+
 
 
 	

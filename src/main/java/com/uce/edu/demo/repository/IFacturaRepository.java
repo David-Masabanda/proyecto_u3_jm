@@ -1,7 +1,6 @@
 package com.uce.edu.demo.repository;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.util.List;
 
 import com.uce.edu.demo.repository.modelo.Factura;
@@ -18,4 +17,8 @@ public interface IFacturaRepository {
 	//Inner Outer Join Right
 	public List<Factura> buscarFacturaOuterJoinRight(Integer cantidad);
 		
+	//Where Join
+	public List<Factura> buscarFacturaJoinWhere(BigDecimal precio);
+	//Fetch Join
+	public List<Factura> buscarFacturaJoinFetch(BigDecimal precio);
 }

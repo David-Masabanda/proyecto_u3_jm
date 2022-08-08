@@ -31,28 +31,21 @@ public class ProyectoU3JmApplication implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 		
 		
-		// INNER
-		LOG.info("INNER JOIN");
-		List<Factura> listaFactura = this.facturaService.buscarFacturaInnerJoin(new BigDecimal(6.50));
+		// WHERE
+		LOG.info("WHERE JOIN");
+		List<Factura> listaFactura = this.facturaService.buscarFacturaJoinWhere(new BigDecimal(6.50));
 		for(Factura item:  listaFactura) {
-			LOG.info("Hotel: "+item.getDetalles());
+			LOG.info("Factura: "+item.getNumero()+" "+item.getFecha() );
 		}
 		
 		
-		// LEFT
-		LOG.info("LEFT JOIN");
-		List<Factura> listaFactura2= this.facturaService.buscarFacturaOuterJoinLeft(new BigDecimal(8.50));
+		// FETCH
+		LOG.info("FETCH JOIN");
+		List<Factura> listaFactura2= this.facturaService.buscarFacturaJoinFetch(new BigDecimal(8.50));
 		for(Factura item:  listaFactura2) {
-			LOG.info("Hotel: "+item.getDetalles());
+			LOG.info("Factura: "+item.getNumero()+" "+item.getFecha() );
 		}
 			
-		
-		// RIGHT
-		LOG.info("RIGHT JOIN");
-		List<Factura> listaFactura3 = this.facturaService.buscarFacturaOuterJoinRight(4);
-		for(Factura item:  listaFactura3) {
-			LOG.info("Hotel: "+item.getDetalles());
-		}
 			
 		
 	}

@@ -57,6 +57,26 @@ public class FacturaRepositoryImpl implements IFacturaRepository{
 		return myQuery.getResultList();
 	}
 
+	//WHERE JOIN 
+	@Override
+	public List<Factura> buscarFacturaJoinWhere(BigDecimal precio) {
+		TypedQuery<Factura> myQuery=this.entityManager.createQuery(
+				"SELECT f FROM Factura f, Detalle d WHERE f.id=d.factura AND d.subtotal> :datoPrecio",
+				Factura.class);
+		myQuery.setParameter("datoPrecio", precio);
+		return myQuery.getResultList();
+	}
+
+	//FETCH JOIN
+	@Override
+	public List<Factura> buscarFacturaJoinFetch(BigDecimal precio) {
+		TypedQuery<Factura> myQuery=this.entityManager.createQuery(
+				"SELECT f FROM Factura f JOIN FETCH f.detalles d WHERE d.subtotal> :datoPrecio",
+				Factura.class);
+		myQuery.setParameter("datoPrecio", precio);
+		return myQuery.getResultList();
+	}
+
 
 
 }

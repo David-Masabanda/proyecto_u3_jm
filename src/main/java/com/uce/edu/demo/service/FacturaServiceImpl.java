@@ -38,4 +38,16 @@ public class FacturaServiceImpl implements  IFacturaService {
 		return this.facturaRepository.buscarFacturaOuterJoinRight(cantidad);
 	}
 
+	//WHERE JOIN
+	@Override
+	public List<Factura> buscarFacturaJoinWhere(BigDecimal precio) {
+		return this.facturaRepository.buscarFacturaJoinWhere(precio);
+	}
+
+	//FETCH JOIN
+	@Override
+	public List<Factura> buscarFacturaJoinFetch(BigDecimal precio) {
+		return this.facturaRepository.buscarFacturaJoinFetch(precio);
+	}
+
 }
