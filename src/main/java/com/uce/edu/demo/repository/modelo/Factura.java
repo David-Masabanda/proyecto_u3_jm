@@ -1,9 +1,9 @@
 package com.uce.edu.demo.repository.modelo;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -29,11 +29,14 @@ public class Factura {
 	
 	@Column(name="fact_numero")
 	private String numero;
+	
+	@Column(name="fact_total")
+	private BigDecimal total;
 
-	@OneToMany(mappedBy="factura",cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="factura", fetch = FetchType.EAGER)
 	private List<Detalle> detalles;
 
-	
+
 	//SET y GET
 	public Integer getId() {
 		return id;
@@ -67,10 +70,15 @@ public class Factura {
 		this.detalles = detalles;
 	}
 
-	@Override
-	public String toString() {
-		return "Factura [id=" + id + ", fecha=" + fecha + ", numero=" + numero + "]";
+	public BigDecimal getTotal() {
+		return total;
 	}
+
+	public void setTotal(BigDecimal total) {
+		this.total = total;
+	}
+
+
 	
 	
 	

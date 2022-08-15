@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.support.TransactionSynchronizationManager;
 
 import com.uce.edu.demo.repository.IHotelRepository;
+import com.uce.edu.demo.repository.modelo.ContadorHabitaciones;
 import com.uce.edu.demo.repository.modelo.Hotel;
 
 @Service
@@ -25,7 +26,6 @@ public class HotelServiceImpl implements IHotelService{
 	
 	@Override
 	public List<Hotel> buscarHotelInnerJoin2() {
-		// TODO Auto-generated method stub
 		return this.hotelRepository.buscarHotelInnerJoin2();
 	}
 
@@ -36,7 +36,6 @@ public class HotelServiceImpl implements IHotelService{
 	
 	@Override
 	public List<Hotel> buscarHotelOuterJoinLeft2() {
-		// TODO Auto-generated method stub
 		return this.hotelRepository.buscarHotelOuterJoinLeft2();
 	}
 
@@ -47,7 +46,6 @@ public class HotelServiceImpl implements IHotelService{
 
 	@Override
 	public List<Hotel> buscarHotelJoinWhere(String tipoHabitacion) {
-		// TODO Auto-generated method stub
 		return this.hotelRepository.buscarHotelJoinWhere(tipoHabitacion);
 	}
 
@@ -58,6 +56,43 @@ public class HotelServiceImpl implements IHotelService{
 	}
 
 	
+	//Trabajo Grupal
+	@Override
+	public void insertar(Hotel h) {
+		this.hotelRepository.insertar(h);
+		
+	}
+
+	@Override
+	public Hotel buscarHotel(String tipo) {
+		return this.hotelRepository.buscarHotel(tipo);
+	}
+
+	@Override
+	public Hotel buscar(Integer id) {
+		return this.hotelRepository.buscar(id);
+	}
+
+	@Override
+	public ContadorHabitaciones contarHabitaciones(Integer id, String tipo) {
+		return this.hotelRepository.contarHabitaciones(id, tipo);
+	}
+ 
+	/*
+	@Override
+	public int contarHabitaciones(Integer id, String tipo) {
+		Hotel h=this.hotelRepository.buscar(id);
+		List<Habitacion>lista=h.getHabitaciones();
+		int numHabitaciones=0;
+		
+		for(Habitacion item: lista) {
+			if(item.getTipo().equals(tipo)) {
+				numHabitaciones=numHabitaciones+1;
+			}
+		}
+		
+		return numHabitaciones;
+	}*/
 
 
 

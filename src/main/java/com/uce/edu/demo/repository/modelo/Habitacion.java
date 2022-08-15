@@ -15,22 +15,22 @@ import javax.persistence.Table;
 public class Habitacion {
 	
 	@Id
-	@Column(name="hab_id")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator ="hab_id_seq" )
-	@SequenceGenerator(name="hab_id_seq", sequenceName = "hab_id_seq", allocationSize =1 )
+	@Column(name="habi_id")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator ="habi_id_seq" )
+	@SequenceGenerator(name="habi_id_seq", sequenceName = "habi_id_seq", allocationSize =1 )
 	private Integer id;
 	
-	@Column(name="hab_numero")
+	@Column(name="habi_numero")
 	private String numero;
 	
-	@Column(name="hab_piso")
+	@Column(name="habi_piso")
 	private String piso;
 	
-	@Column(name="hab_tipo")
+	@Column(name="habi_tipo")
 	private String tipo;
 
 	@ManyToOne()
-	@JoinColumn(name="hab_id_hotel")
+	@JoinColumn(name="habi_id_hotel")
 	private Hotel hotel;
 	
 	//GET SET
@@ -72,17 +72,9 @@ public class Habitacion {
 
 	public void setHotel(Hotel hotel) {
 		this.hotel = hotel;
-	}
-
-	@Override
-	public String toString() {
-		return "Habitacion [id=" + id + ", numero=" + numero + ", piso=" + piso + ", tipo=" + tipo + ", hotel=" + hotel
-				+ "]";
-	}
-
-
-	
+	}	
 	
 	
 	
 }
+

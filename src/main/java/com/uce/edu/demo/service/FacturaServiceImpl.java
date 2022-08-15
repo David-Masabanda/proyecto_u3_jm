@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.uce.edu.demo.repository.IFacturaRepository;
+import com.uce.edu.demo.repository.modelo.Detalle;
 import com.uce.edu.demo.repository.modelo.Factura;
 
 @Service
@@ -19,6 +20,52 @@ public class FacturaServiceImpl implements  IFacturaService {
 	public Factura consultar(Integer id) {
 		return this.facturaRepository.consultar(id);
 	}
+	
+	@Override
+	public void create(Factura f) {
+		this.facturaRepository.create(f);
+	}
+
+	@Override
+	public void update(Factura f) {
+		this.facturaRepository.update(f);
+	}
+
+	@Override
+	public void delete(Integer id) {
+		this.facturaRepository.delete(id);
+	}
+	
+	//----------------Trab Grupo----------------------------------
+	@Override
+	public BigDecimal calcularPrecio(Integer id) {
+		Factura f=this.facturaRepository.consultar(id);
+		List<Detalle> productos=f.getDetalles();
+		BigDecimal valorFactura=new BigDecimal(0);
+		
+		for(Detalle p: productos) {
+			BigDecimal cantidad=new BigDecimal(p.getCantidad());
+			BigDecimal totalProducto=p.getPrecio().multiply(cantidad);
+			valorFactura=valorFactura.add(totalProducto);
+		}
+		
+		return valorFactura;
+		
+	}
+
+	@Override
+	public int cantidad(Integer id) {
+		Factura f=this.facturaRepository.consultar(id);
+		List<Detalle> productos=f.getDetalles();
+		int canasta=0;
+		
+		for(Detalle p: productos) {
+			canasta=canasta+p.getCantidad();
+		}
+		
+		return canasta;
+	}
+	//-----------------------------------------------------------
 
 	//INNER JOIN
 	@Override

@@ -2,7 +2,6 @@ package com.uce.edu.demo.repository.modelo;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -29,7 +28,7 @@ public class Hotel {
 	@Column(name="hote_direccion")
 	private String direccion;
 	
-	@OneToMany(mappedBy="hotel", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="hotel", fetch=FetchType.EAGER)
 	private List<Habitacion> habitaciones;
 	
 	
@@ -60,9 +59,10 @@ public class Hotel {
 	}
 	@Override
 	public String toString() {
-		return "Hotel [id=" + id + ", nombre=" + nombre + ", direccion=" + direccion 
-				+ "]";
+		return "Hotel [id=" + id + ", nombre=" + nombre + ", direccion=" + direccion + "]";
 	}
+
+
 	
 	
 }

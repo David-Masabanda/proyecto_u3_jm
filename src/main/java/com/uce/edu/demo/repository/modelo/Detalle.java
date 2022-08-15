@@ -17,22 +17,22 @@ import javax.persistence.Table;
 public class Detalle {
 	
 	@Id
-	@Column(name="det_id")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator ="det_id_seq" )
-	@SequenceGenerator(name="det_id_seq", sequenceName = "det_id_seq", allocationSize =1 )
+	@Column(name="deta_id")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator ="deta_id_seq" )
+	@SequenceGenerator(name="deta_id_seq", sequenceName = "deta_id_seq", allocationSize =1 )
 	private Integer id;
 	
-	@Column(name="det_nombre")
+	@Column(name="deta_nombre")
 	private String nombre;
 	
-	@Column(name="det_cantidad")
+	@Column(name="deta_cantidad")
 	private Integer cantidad;
 	
-	@Column(name="det_subtotal")
-	private BigDecimal subtotal;
+	@Column(name="deta_precio")
+	private BigDecimal precio;
 	
 	@ManyToOne
-	@JoinColumn(name="det_fact_id")
+	@JoinColumn(name="deta_fact_id" )
 	private Factura factura;
 	
 	
@@ -53,12 +53,12 @@ public class Detalle {
 		this.cantidad = cantidad;
 	}
 
-	public BigDecimal getSubtotal() {
-		return subtotal;
+	public BigDecimal getPrecio() {
+		return precio;
 	}
 
-	public void setSubtotal(BigDecimal subtotal) {
-		this.subtotal = subtotal;
+	public void setPrecio(BigDecimal precio) {
+		this.precio = precio;
 	}
 
 	public Factura getFactura() {
@@ -77,11 +77,9 @@ public class Detalle {
 		this.nombre = nombre;
 	}
 
-	@Override
-	public String toString() {
-		return "Detalle [id=" + id + ", nombre=" + nombre + ", cantidad=" + cantidad + ", subtotal=" + subtotal
-				+ ", factura=" + factura + "]";
-	}
+
+
+
 
 
 

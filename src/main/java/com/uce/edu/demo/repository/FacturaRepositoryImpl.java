@@ -24,7 +24,27 @@ public class FacturaRepositoryImpl implements IFacturaRepository{
 	public Factura consultar(Integer id) {
 		return this.entityManager.find(Factura.class, id);
 	}
+	@Override
+	public void create(Factura f) {
+		this.entityManager.persist(f);
+	}
 
+	@Override
+	public void update(Factura f) {
+		this.entityManager.merge(f);
+	}
+
+	@Override
+	public void delete(Integer id) {
+		Factura f=this.consultar(id);
+		this.entityManager.remove(f);
+	}
+
+	
+	
+	
+	
+	
 	//INNER JOIN
 	@Override
 	public List<Factura> buscarFacturaInnerJoin(BigDecimal precio) {

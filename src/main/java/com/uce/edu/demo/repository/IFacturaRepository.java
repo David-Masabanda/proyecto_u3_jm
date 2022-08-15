@@ -7,7 +7,11 @@ import com.uce.edu.demo.repository.modelo.Factura;
 
 public interface IFacturaRepository {
 	
+	//CRUD
 	public Factura consultar(Integer id);
+	public void create(Factura f);
+	public void update(Factura f);
+	public void delete(Integer id);
 	
 	
 	//Inner Join
