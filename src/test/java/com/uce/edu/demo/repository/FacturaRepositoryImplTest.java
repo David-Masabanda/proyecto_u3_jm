@@ -21,7 +21,7 @@ class FacturaRepositoryImplTest {
 	void testConsultar() {
 		Factura f=new Factura();
 		f.setId(2);
-		f.setNumero("1020");
+		f.setNumero(null);
 		f.setFecha(LocalDateTime.of(2022, 7, 21, 0, 0));
 		f.setTotal(new BigDecimal(7.6));
 		

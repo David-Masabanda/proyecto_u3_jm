@@ -78,21 +78,7 @@ public class HotelServiceImpl implements IHotelService{
 		return this.hotelRepository.contarHabitaciones(id, tipo);
 	}
  
-	/*
-	@Override
-	public int contarHabitaciones(Integer id, String tipo) {
-		Hotel h=this.hotelRepository.buscar(id);
-		List<Habitacion>lista=h.getHabitaciones();
-		int numHabitaciones=0;
-		
-		for(Habitacion item: lista) {
-			if(item.getTipo().equals(tipo)) {
-				numHabitaciones=numHabitaciones+1;
-			}
-		}
-		
-		return numHabitaciones;
-	}*/
+
 
 
 

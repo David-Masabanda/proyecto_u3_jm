@@ -16,7 +16,6 @@ class HotelServiceImplTest {
 	@Autowired
 	private IHotelService hotelService;
 	
-	//Dome
 	@Test
 	void testBuscarHotel() {
 		Hotel h2=hotelService.buscarHotel("Suite");
@@ -26,8 +25,8 @@ class HotelServiceImplTest {
 
 	@Test
 	void testContarHabitaciones() {
-		ContadorHabitaciones contador=this.hotelService.contarHabitaciones(3, "Familiar");
-		assertTrue(contador.getCantidad()>1);
+		ContadorHabitaciones contador=this.hotelService.contarHabitaciones(3, "Suite Presidencial");
+		assertTrue(contador.getCantidad()>5);
 	}
 
 }

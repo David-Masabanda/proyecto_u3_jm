@@ -48,12 +48,15 @@ public class TransferenciaServiceImpl implements ITransferenciaService{
 		t.setMonto(monto);
 		this.transferenciaRepository.insertar(t);
 		
+		if(monto.compareTo(saldoOrigen)>0) {
+			throw new RuntimeException();
+		}
+		
 	}
 
 	@Override
 	@Transactional(value = TxType.REQUIRED)
 	public void realizarTransferenciaFachada(String ctaOrigen, String ctaDestino, BigDecimal monto) {
-		// TODO Auto-generated method stub
 		this.realizarTransferencia(ctaOrigen, ctaDestino, monto);
 	}
 

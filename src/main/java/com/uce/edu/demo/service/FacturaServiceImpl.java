@@ -42,11 +42,15 @@ public class FacturaServiceImpl implements  IFacturaService {
 		Factura f=this.facturaRepository.consultar(id);
 		List<Detalle> productos=f.getDetalles();
 		BigDecimal valorFactura=new BigDecimal(0);
+		BigDecimal valorIva=new BigDecimal(0);
 		
 		for(Detalle p: productos) {
 			BigDecimal cantidad=new BigDecimal(p.getCantidad());
 			BigDecimal totalProducto=p.getPrecio().multiply(cantidad);
 			valorFactura=valorFactura.add(totalProducto);
+			valorIva=valorFactura.multiply(new BigDecimal(12));
+			valorIva=valorIva.divide(new BigDecimal(100));
+			valorFactura=valorFactura.add(valorIva);
 		}
 		
 		return valorFactura;

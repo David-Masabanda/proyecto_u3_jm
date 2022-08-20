@@ -25,6 +25,7 @@ public class CuentaBancariaRepositoryImpl implements ICuentaBancariaRepository {
 	@Transactional(value = TxType.REQUIRES_NEW)
 	public void actualizar(CuentaBancaria cb) {
 		this.entityManeger.merge(cb);
+		//throw new RuntimeException();
 	}
 
 	@Override

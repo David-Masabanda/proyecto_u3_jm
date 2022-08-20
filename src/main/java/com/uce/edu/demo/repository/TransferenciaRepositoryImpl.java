@@ -20,6 +20,7 @@ public class TransferenciaRepositoryImpl implements ITransferenciaRepository{
 	@Transactional(value = TxType.MANDATORY)
 	public void insertar(Transferencia t) {
 		this.entityManeger.persist(t);
+		throw new RuntimeException();
 	}
 
 }

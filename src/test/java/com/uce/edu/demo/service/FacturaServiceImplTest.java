@@ -1,7 +1,9 @@
 package com.uce.edu.demo.service;
 
-import static org.junit.Assert.assertSame;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotSame;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -22,7 +24,6 @@ class FacturaServiceImplTest {
 	@Autowired
 	private IFacturaService facturaService;
 	
-	//David
 	@Test
 	void testConsultar() {
 		Factura f=new Factura();
@@ -38,18 +39,19 @@ class FacturaServiceImplTest {
 		assertNotSame(f2, f3);
 	}
 
-	//Yo
 	@Test
 	void testCalcularPrecio() {
 		BigDecimal valor=this.facturaService.calcularPrecio(1);
 		
 		Double valorReal=valor.doubleValue();
-		Double valorEsperado=9.45;
+		Factura factura=this.facturaService.consultar(1);
+		Double valorEsperado=factura.getTotal().doubleValue();
+		Double valorIva=(valorEsperado*12)/100;
+		valorEsperado=valorEsperado+valorIva;
 		
-		assertEquals(valorEsperado, valorReal);
+		assertEquals(valorEsperado, valorReal, 2.5);
 	}
 	
-	//David y Yo
 	@Test
 	void testCantidad() {
 		
