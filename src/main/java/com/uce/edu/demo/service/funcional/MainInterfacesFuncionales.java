@@ -1,0 +1,38 @@
+package com.uce.edu.demo.service.funcional;
+
+import org.jboss.logging.Logger;
+
+public class MainInterfacesFuncionales {
+	
+	private static Logger LOG =Logger.getLogger( MainInterfacesFuncionales.class);
+	
+	public static void main(String[] args) {
+		//SUPLIER
+		//*Clases
+		IPersonaSupplier<String>supplier=new PersonaSupplierImpl();
+		LOG.info("Supplier Clase: "+supplier.getNombre());
+		//*Lambdas
+		IPersonaSupplier<String>supplierLambda=()->"Martin";
+		LOG.info("Supplier Lambda: "+supplierLambda.getNombre());
+		
+		//CONSUMER
+		//*Clases
+		IPersonaConsumer<String>consumer=new PersonaConsumerImpl();
+		consumer.accept("Prueba Consumer");
+		//*Lambdas
+		IPersonaConsumer<String>consumerLambda= cadena-> System.out.println(cadena);
+		consumerLambda.accept("Prueba Consumer Lambda");
+		
+		//PREDICATE
+		//*Clases
+		//*Lambdas
+		
+		//FUNCTION
+		//*Clases
+		//*Lambdas
+		
+		//UNARY OPERATOR (FUNCTION)
+		//*Clases
+		//*Lambdas
+	}
+}
