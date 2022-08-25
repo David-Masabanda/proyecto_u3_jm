@@ -32,8 +32,9 @@ public class ProyectoU3JmApplication implements CommandLineRunner{
 		codigos.add("A0012");
 		codigos.add("A0010");
 		codigos.add("A0015");
+		codigos.add("A0003");
 		
-		this.gestorTiendaService.crearFactura("1719139002", "1025", codigos);
+		this.gestorTiendaService.crearFactura("1719139003", "2000", codigos);
 
 	}
 

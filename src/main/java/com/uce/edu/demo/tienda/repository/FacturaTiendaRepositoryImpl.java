@@ -17,7 +17,7 @@ public class FacturaTiendaRepositoryImpl implements IFacturaTiendaRepository{
 	private EntityManager entityManager;
 	
 	@Override
-	@Transactional(value = TxType.REQUIRED)
+	@Transactional(value = TxType.MANDATORY)
 	public void insertarFactura(FacturaTienda f) {
 		this.entityManager.persist(f);	
 	}

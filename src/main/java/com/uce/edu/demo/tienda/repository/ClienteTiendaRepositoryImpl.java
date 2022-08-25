@@ -18,7 +18,7 @@ public class ClienteTiendaRepositoryImpl implements IClienteTiendaRepository{
 	private EntityManager entityManager;
 	
 	@Override
-	@Transactional(value = TxType.REQUIRED)
+	@Transactional(value = TxType.MANDATORY)
 	public ClienteTienda buscarPorCedula(String cedula) {
 		TypedQuery<ClienteTienda> myQuery=this.entityManager.createQuery(
 				"SELECT c FROM ClienteTienda c WHERE c.numeroCedula= :datoCedula",

@@ -4,8 +4,10 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -38,7 +40,7 @@ public class FacturaTienda {
 	@JoinColumn(name="fact_clie_id")
 	private ClienteTienda cliente;
 	
-	@OneToMany(mappedBy="factura")
+	@OneToMany(mappedBy="factura", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<DetalleFactura> detalles;
 
 	//Set y Get
