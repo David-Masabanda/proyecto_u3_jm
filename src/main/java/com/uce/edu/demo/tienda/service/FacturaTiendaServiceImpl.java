@@ -60,10 +60,9 @@ public class FacturaTiendaServiceImpl implements IFacturaTiendaService{
 			this.productoRepository.actualizar(producto);
 			
 			detalles.add(detalle);
-			//this.detalleRepository.insertar(detalle);
-			//cantidadProductos++;
 		}
 		
+		factura.setTotal(total);
 		factura.setDetalles(detalles);
 		this.facturaRepository.insertarFactura(factura);
 		
